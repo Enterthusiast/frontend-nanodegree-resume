@@ -46,14 +46,12 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   Uncomment the <script> tag below when you're ready to add an interactive
   Google Map to your resume!
   -->
-<!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script> -->
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
   <meta name="viewport" content="width=device-width">
 </head>
 <body>
   <div id="main">
-    Hello world!   <!-- You'll be deleting this line in the course -->
-
     <!--
     Everything from here to the <script> tag below is the skeleton of your
     website. Your code will add information to each of the sections of the
@@ -113,27 +111,98 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
         an opening and closing set of slash asterisks for block comments.
     */
 
+    $('#header').append(HTMLheaderName.replace("%data%", bio.name));
+    $('#header').append(HTMLheaderRole.replace("%data%", bio.role));
+
+    $('#header').append(HTMLbioPic.replace("%data%", bio.biopic));
+    $('#header').append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
+
+    $('#header').append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+    $('#header').append(HTMLemail.replace("%data%", bio.contacts.email));
+    $('#header').append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+    $('#header').append(HTMLgithub.replace("%data%", bio.contacts.github));
+    $('#header').append(HTMLblog.replace("%data%", bio.contacts.blog));
+    $('#header').append(HTMLlocation.replace("%data%", bio.location));
+
+    if(bio.skills.length > 0) {
+      $('#header').append(HTMLskillsStart);
+      for (var i = 0; i < bio.skills.length; i++) {
+        $('#skills').append(HTMLskills.replace("%data%", bio.skills[i]));
+      }
+    }
+
+    $(document).click(function(loc) {
+      logClicks(loc.pageX,loc.pageY);
+    });
+
+    var displayWork = function() {
+      for (job in work.jobs) {
+        $('#workExperience').append(HTMLworkStart);
+        $('.work-entry:last').append(HTMLworkEmployer.replace("%data%", work.jobs[job].employer) + HTMLworkTitle.replace("%data%", work.jobs[job].title));
+        $('.work-entry:last').append(HTMLworkDates.replace("%data%", work.jobs[job].dates));
+        $('.work-entry:last').append(HTMLworkLocation.replace("%data%", work.jobs[job].location));
+        $('.work-entry:last').append(HTMLworkDescription.replace("%data%", work.jobs[job].description));
+      }
+    }
+    displayWork();
+
+    projects.display = function () {
+      for (project in projects.projects) {
+        $('#projects').append(HTMLprojectStart);
+        $('.project-entry:last').append(HTMLprojectTitle.replace("%data%", projects.projects[project].title));
+        $('.project-entry:last').append(HTMLprojectDates.replace("%data%", projects.projects[project].dates));
+        $('.project-entry:last').append(HTMLprojectDescription.replace("%data%", projects.projects[project].description));
+        for (image in projects.projects[project].images) {
+          $('.project-entry:last').append(HTMLprojectImage.replace("%data%", projects.projects[project].images));
+        }
+      }
+    }
+    projects.display();
+
+    education.display = function () {
+      for (school in education.schools) {
+        $('#education').append(HTMLschoolStart);
+        $('.education-entry:last').append(HTMLschoolName.replace("%data%", education.schools[school].name) + HTMLschoolDegree.replace("%data%", education.schools[school].degree));
+        $('.education-entry:last').append(HTMLschoolDates.replace("%data%", education.schools[school].dates));
+        $('.education-entry:last').append(HTMLschoolLocation.replace("%data%", education.schools[school].location));
+        for (major in education.schools[school].majors) {
+          $('.education-entry:last').append(HTMLschoolMajor.replace("%data%", education.schools[school].majors[major]));
+        }
+      }
+    }
+    education.display();
+
+    $('#mapDiv').append(googleMap);
+
+    $('#main').append(internationalizeButton);
 
     if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('topContacts').style.display = 'none';
+      document.getElementById('topContacts').style.backgroundColor = 'black';
     }
     if(document.getElementsByTagName('h1').length === 0) {
-      document.getElementById('header').style.display = 'none';
+      document.getElementById('header').style.backgroundColor = 'black';
     }
     if(document.getElementsByClassName('work-entry').length === 0) {
-      document.getElementById('workExperience').style.display = 'none';
+      document.getElementById('workExperience').style.backgroundColor = 'black';
     }
     if(document.getElementsByClassName('project-entry').length === 0) {
-      document.getElementById('projects').style.display = 'none';
+      document.getElementById('projects').style.backgroundColor = 'black';
     }
     if(document.getElementsByClassName('education-entry').length === 0) {
-      document.getElementById('education').style.display = 'none';
+      document.getElementById('education').style.backgroundColor = 'black';
     }
     if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('lets-connect').style.display = 'none';
+      document.getElementById('lets-connect').style.backgroundColor = 'black';
     }
     if(document.getElementById('map') === null) {
-      document.getElementById('map-div').style.display = 'none';
+      document.getElementById('map-div').style.backgroundColor = 'black';
+    }
+
+    var inName = function (_names) {
+      names = _names.trim().split(" ");
+      names[0] = names[0].slice(0,1).toUpperCase() + names[0].slice(1);
+      names[1] = names[1].toUpperCase();
+      return names[0] + " " + names[1];
     }
   </script>
 </body>
