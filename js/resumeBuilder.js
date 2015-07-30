@@ -203,14 +203,14 @@ var education = {
 	        "location" : "Villejuif, France",
 	        "degree" : "Engineer",
 	        "majors" : ["Software Engineer"],
-	        "dates": "2005 - 2008"
+	        "dates": 2008
 	    }
 	],
 	"onlineCourses" : [
 	    {
-	        "title" : "Nanodegree",
+	        "title" : "Web Developper Nanodegree",
 	        "school" : "Udacity",
-	        "dates" : "2015",
+	        "dates" : 2015,
 	        "url" : "https://www.udacity.com"
 	    }
 	]

@@ -111,17 +111,20 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
         an opening and closing set of slash asterisks for block comments.
     */
 
-    $('#header').append(HTMLheaderName.replace("%data%", bio.name));
-    $('#header').append(HTMLheaderRole.replace("%data%", bio.role));
+    $('#header').prepend(HTMLheaderRole.replace("%data%", bio.role));
+    $('#header').prepend(HTMLheaderName.replace("%data%", bio.name));
+
+    var displayContact = function (_element) {
+      _element.append(HTMLmobile.replace("%data%", bio.contacts.mobile));
+      _element.append(HTMLemail.replace("%data%", bio.contacts.email));
+      _element.append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
+      _element.append(HTMLgithub.replace("%data%", bio.contacts.github));
+      _element.append(HTMLlocation.replace("%data%", bio.contacts.location));
+    };
+    displayContact($('#topContacts'));
 
     $('#header').append(HTMLbioPic.replace("%data%", bio.biopic));
     $('#header').append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage));
-
-    $('#header').append(HTMLmobile.replace("%data%", bio.contacts.mobile));
-    $('#header').append(HTMLemail.replace("%data%", bio.contacts.email));
-    $('#header').append(HTMLtwitter.replace("%data%", bio.contacts.twitter));
-    $('#header').append(HTMLgithub.replace("%data%", bio.contacts.github));
-    $('#header').append(HTMLlocation.replace("%data%", bio.contacts.location));
 
     if(bio.skills.length > 0) {
       $('#header').append(HTMLskillsStart);
@@ -142,7 +145,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
         $('.work-entry:last').append(HTMLworkLocation.replace("%data%", work.jobs[job].location));
         $('.work-entry:last').append(HTMLworkDescription.replace("%data%", work.jobs[job].description));
       }
-    }
+    };
     displayWork();
 
     projects.display = function () {
@@ -155,12 +158,12 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
           $('.project-entry:last').append(HTMLprojectImage.replace("%data%", projects.projects[project].images));
         }
       }
-    }
+    };
     projects.display();
 
     education.display = function () {
+      $('#education').append(HTMLschoolStart);
       for (school in education.schools) {
-        $('#education').append(HTMLschoolStart);
         $('.education-entry:last').append(HTMLschoolName.replace("%data%", education.schools[school].name) + HTMLschoolDegree.replace("%data%", education.schools[school].degree));
         $('.education-entry:last').append(HTMLschoolDates.replace("%data%", education.schools[school].dates));
         $('.education-entry:last').append(HTMLschoolLocation.replace("%data%", education.schools[school].location));
@@ -168,12 +171,20 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
           $('.education-entry:last').append(HTMLschoolMajor.replace("%data%", education.schools[school].majors[major]));
         }
       }
-    }
+      $('.education-entry:last').append(HTMLonlineClasses);
+      for (onlineCourse in education.onlineCourses) {
+        $('.education-entry:last').append(HTMLonlineTitle.replace("%data%", education.onlineCourses[onlineCourse].title) + HTMLonlineSchool.replace("%data%", education.onlineCourses[onlineCourse].school));
+        $('.education-entry:last').append(HTMLonlineDates.replace("%data%", education.onlineCourses[onlineCourse].dates));
+        $('.education-entry:last').append(HTMLonlineURL.replace("%data%", education.onlineCourses[onlineCourse].url));
+      }
+    };
     education.display();
 
     $('#mapDiv').append(googleMap);
 
-    $('#main').append(internationalizeButton);
+    //$('#main').append(internationalizeButton);
+
+    displayContact($('#footerContacts'));
 
     if(document.getElementsByClassName('flex-item').length === 0) {
       document.getElementById('topContacts').style.backgroundColor = 'black';
@@ -202,7 +213,8 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
       names[0] = names[0].slice(0,1).toUpperCase() + names[0].slice(1);
       names[1] = names[1].toUpperCase();
       return names[0] + " " + names[1];
-    }
+    };
+
   </script>
 </body>
 </html>
