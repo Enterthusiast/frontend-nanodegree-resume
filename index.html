@@ -63,16 +63,16 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     </div>
     <div style="clear: both;"></div>
     <div id="workExperience" class="gray">
-      <h2>Work Experience</h2>
+      <h2 id="workExperienceTitle">Work Experience</h2>
     </div>
     <div id="projects">
-      <h2>Projects</h2>
+      <h2 id="projectsTitle">Projects</h2>
     </div>
     <div id="education" class="gray">
-      <h2>Education</h2>
+      <h2 id="educationTitle">Education</h2>
     </div>
     <div id="mapDiv">
-      <h2>Where I've Lived and Worked</h2>
+      <h2 id="mapDivTitle">Where I've Lived and Worked</h2>
     </div>
     <div id="lets-connect" class="dark-gray">
       <h2 class="orange center-text">Let's Connect</h2>
@@ -115,6 +115,8 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
         an opening and closing set of slash asterisks for block comments.
     */
 
+    //TODO: add polymers or other kind of interactivity (open/close sections?)
+
     //my content
     bio.display($('#header'));
     education.display();
@@ -130,7 +132,15 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     //map activated \o/
     $('#mapDiv').append(googleMap);
 
+    //open & close sections
+    /*
+    $('#workExperienceTitle').click(function () {
+        $('#workExperience').animate({height: "toggle"}, "linear");
+    });
+    */
+
     //code from the course
+    /*
     if(document.getElementsByClassName('flex-item').length === 0) {
       document.getElementById('topContacts').style.backgroundColor = 'black';
     }
@@ -152,14 +162,17 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     if(document.getElementById('map') === null) {
       document.getElementById('map-div').style.backgroundColor = 'black';
     }
+    */
 
     //code written for the international name quiz
+    /*
     var inName = function (_names) {
       names = _names.trim().split(" ");
       names[0] = names[0].slice(0,1).toUpperCase() + names[0].slice(1);
       names[1] = names[1].toUpperCase();
       return names[0] + " " + names[1];
     };
+    */
 
   </script>
 </body>

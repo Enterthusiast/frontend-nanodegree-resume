@@ -10,7 +10,7 @@ var bio = {
 		"location" : "Paris, France"
 	},
 	"skills" : ["HTML", "CSS", "JS", "User oriented", "Organized", "Quick learner"],
-	"biopic" : "https://lh3.googleusercontent.com/xypTnFxCToq4nj7d8pYS7OZVpS8_gf3FoAk4AR0cMXw=s300-no",
+	"biopic" : "images/my_picture.jpg",
 	"display" : function (_element) {
 		if(_element.is($('#header'))) {
 			$('#header').prepend(HTMLheaderRole.replace("%data%", bio.role));

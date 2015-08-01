@@ -19,8 +19,7 @@ h6 {
 }
 
 .education-entry,
-.work-entry,
-.project-entry {
+.work-entry {
   padding: 0 5%;
 }
 
@@ -44,6 +43,7 @@ h3 {
   font-size: 20px;
   color: #000;
   line-height: 22px;
+  padding: 20px 0 0 0;
 }
 
 h4 {
@@ -54,7 +54,6 @@ h4 {
 }
 
 h2,
-h3,
 h4,
 h5 {
   padding:10px 5%;
@@ -167,6 +166,36 @@ span {
 #lets-connect {
   text-align: center;
 }
+
+/* additional CSS - start */
+/* I did also remove h3 and project-entry from some styles */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+h2 {
+  width: 100%;
+}
+
+#main {
+  margin: auto;
+  max-width: 1024px;
+}
+
+#projects {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.project-entry {
+  min-width: 300px;
+  padding: 5px;
+  margin: auto;
+}
+/* additional CSS - end */
 
 /* Media queries to handle various device widths */
 
