@@ -62,20 +62,36 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
       <ul id="topContacts" class="flex-box"></ul>
     </div>
     <div style="clear: both;"></div>
-    <div id="workExperience" class="gray">
-      <h2 id="workExperienceTitle">Work Experience</h2>
+    <div class="gray">
+      <div id="workExperienceTitle">
+        <img src="images/arrow.svg" id="arrowWork" class="arrow-down"/>
+        <h2>Work Experience</h2>
+      </div>
+      <div id="workExperience"></div>
     </div>
-    <div id="projects">
-      <h2 id="projectsTitle">Projects</h2>
+    <div class="white">
+      <div id="projectsTitle">
+        <img src="images/arrow.svg" id="arrowProjects" class="arrow-down"/>
+        <h2>Projects</h2>
+      </div>
+      <div id="projects"></div>
     </div>
-    <div id="education" class="gray">
-      <h2 id="educationTitle">Education</h2>
+    <div class="gray">
+      <div id="educationTitle">
+        <img src="images/arrow.svg" id="arrowEducation" class="arrow-down"/>
+        <h2>Education</h2>
+      </div>
+      <div id="education"></div>
     </div>
-    <div id="mapDiv">
-      <h2 id="mapDivTitle">Where I've Lived and Worked</h2>
+    <div class="white">
+      <div id="mapDivTitle">
+        <img src="images/arrow.svg" id="arrowMap" class="arrow-down"/>
+        <h2>Where I've Lived and Worked</h2>
+      </div>
+      <div id="mapDiv"></div>
     </div>
     <div id="lets-connect" class="dark-gray">
-      <h2 class="orange center-text">Let's Connect</h2>
+      <h2 class="orange center-text one-hundred">Let's Connect</h2>
         <ul id="footerContacts" class="flex-box">
       </ul>
     </div>
@@ -115,8 +131,6 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
         an opening and closing set of slash asterisks for block comments.
     */
 
-    //TODO: add polymers or other kind of interactivity (open/close sections?)
-
     //my content
     bio.display($('#header'));
     education.display();
@@ -133,11 +147,22 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     $('#mapDiv').append(googleMap);
 
     //open & close sections
-    /*
     $('#workExperienceTitle').click(function () {
         $('#workExperience').animate({height: "toggle"}, "linear");
+        $('#arrowWork').toggleClass('arrow-down');
     });
-    */
+    $('#projectsTitle').click(function () {
+        $('#projects').animate({height: "toggle"}, "linear");
+        $('#arrowProjects').toggleClass('arrow-down');
+    });
+    $('#educationTitle').click(function () {
+        $('#education').animate({height: "toggle"}, "linear");
+        $('#arrowEducation').toggleClass('arrow-down');
+    });
+    $('#mapDivTitle').click(function () {
+        $('#mapDiv').animate({height: "toggle"}, "linear");
+        $('#arrowMap').toggleClass('arrow-down');
+    });
 
     //code from the course
     /*

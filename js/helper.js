@@ -13,7 +13,7 @@ These are HTML strings. As part of the course, you'll be using JavaScript functi
 replace the %data% placeholder text you see in them.
 */
 var HTMLheaderName = '<h1 id="name">%data%</h1>';
-var HTMLheaderRole = '<span>%data%</span><hr/>';
+var HTMLheaderRole = '<div id="role">%data%</div><hr/>';
 
 var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="white-text">%data%</span></li>';
 var HTMLmobile = '<li class="flex-item"><span class="orange-text">mobile</span><span class="white-text">%data%</span></li>';
@@ -133,13 +133,21 @@ function initializeMap() {
     // iterates through school locations and appends each location to
     // the locations array
     for (var school in education.schools) {
-      locations.push(education.schools[school].location);
+      //fixed the script to prevent spamy location list (google stopped answer after 8 identical requests)
+      if(locations.indexOf(education.schools[school].location) === -1) {
+        console.log("school added ==> " + education.schools[school].location);
+        locations.push(education.schools[school].location);
+      }
     }
 
     // iterates through work locations and appends each location to
     // the locations array
     for (var job in work.jobs) {
-      locations.push(work.jobs[job].location);
+      //fixed the script to prevent spamy location list (google stopped answer after 8 identical requests)
+      if(locations.indexOf(work.jobs[job].location) === -1) {
+        console.log("job added ==> " + work.jobs[job].location);
+        locations.push(work.jobs[job].location);
+      }
     }
 
     return locations;
@@ -193,6 +201,7 @@ function initializeMap() {
   function callback(results, status) {
     if (status == google.maps.places.PlacesServiceStatus.OK) {
       createMapMarker(results[0]);
+      console.log(results[0]);
     }
   }
 
@@ -208,13 +217,13 @@ function initializeMap() {
 
     // Iterates through the array of locations, creates a search object for each location
     for (var place in locations) {
-
+      console.log(locations[place]);
       // the search request object
       var request = {
         query: locations[place]
       };
       //console.log(locations[place]);
-      
+
       // Actually searches the Google Maps API for location data and runs the callback
       // function with the search results after each search.
       service.textSearch(request, callback);

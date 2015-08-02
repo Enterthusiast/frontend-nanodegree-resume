@@ -36,6 +36,7 @@ h2 {
   color: #999;
   line-height: 29px;
   padding: 10px;
+  display: inline-block;
 }
 
 h3 {
@@ -53,7 +54,6 @@ h4 {
   line-height: 17px;
 }
 
-h2,
 h4,
 h5 {
   padding:10px 5%;
@@ -167,36 +167,6 @@ span {
   text-align: center;
 }
 
-/* additional CSS - start */
-/* I did also remove h3 and project-entry from some styles */
-html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-h2 {
-  width: 100%;
-}
-
-#main {
-  margin: auto;
-  max-width: 1024px;
-}
-
-#projects {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.project-entry {
-  min-width: 300px;
-  padding: 5px;
-  margin: auto;
-}
-/* additional CSS - end */
-
 /* Media queries to handle various device widths */
 
 @media only screen and (max-width: 1024px) {
@@ -221,6 +191,14 @@ h2 {
   .welcome-message {
     display: none;
   }
+  #skills {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+  }
 }
 
 #map {
@@ -232,7 +210,6 @@ h2 {
 #mapDiv {
   height: 400px;
   width: 100%;
-  padding-bottom: 5%;
 }
 
 @media only screen and (min-width: 750px) {
@@ -241,3 +218,63 @@ h2 {
     display: block;
   }
 }
+
+/* additional CSS - start */
+/* I did also remove h2 & h3 and project-entry from some styles, and added #skills to mediaquery 750px deleted maDiv padding 5%*/
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+#main {
+  margin: auto;
+  max-width: 1024px;
+}
+
+#projects {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.project-entry {
+  min-width: 300px;
+  padding: 5px;
+  margin: auto;
+}
+
+#arrowWork,
+#arrowProjects,
+#arrowEducation,
+#arrowMap {
+  display: inline-block;
+  margin: 0 0 0 10px;
+  padding: 0;
+  max-height: 17px;
+  max-width: 17px;
+  min-height: 17px;
+  min-width: 17px;
+  vertical-align: baseline; /* to prevent Bootstrap to mess up with the layout */
+}
+
+.arrow-down {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+}
+
+.one-hundred {
+  width: 100%;
+}
+
+#role {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.white {
+  padding-bottom: 10px;
+  clear:both;
+}
+/* additional CSS - end */
