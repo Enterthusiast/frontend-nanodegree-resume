@@ -136,6 +136,7 @@ a {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  -webkit-flex-flow: row wrap;
   justify-content: space-around;
   padding: 10px;
 }
@@ -196,6 +197,7 @@ span {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    -webkit-flex-flow: row wrap;
     justify-content: space-around;
     padding: 10px;
   }
@@ -234,8 +236,10 @@ html {
 }
 
 #projects {
+  display: -webkit-flex;
   display: flex;
   flex-wrap: wrap;
+  -webkit-flex-flow: row wrap;
 }
 
 .project-entry {
